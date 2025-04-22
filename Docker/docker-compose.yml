@@ -1,0 +1,12 @@
+version: '3'
+services:
+  fhe-db:
+    build:
+      context: .
+      dockerfile: Docker/Dockerfile
+    ports:
+      - "8888:8888"  # Jupyter
+      - "8000:8000"  # Pour l'API FastAPI
+    volumes:
+      - .:/workspace
+    command: bash -c "jupyter notebook --ip 0.0.0.0 --no-browser --allow-root"
